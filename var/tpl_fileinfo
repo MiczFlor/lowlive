@@ -1,0 +1,9 @@
+<table>
+<tr><td valign=top align=right>title:</td><td valign=top>_title</td></tr>
+<tr><td valign=top align=right>author:</td><td valign=top>_author</td></tr>
+<tr><td valign=top align=right>date:</td><td valign=top>_date</td></tr>
+<tr><td valign=top align=right>info:</td><td valign=top>_info</td></tr>
+<tr><td valign=top align=right>home:</td><td valign=top><a href="_url" target=_blank>_link</a></td></tr>
+</table>
+
+

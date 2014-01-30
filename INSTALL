@@ -1,0 +1,168 @@
+#    @license    http://www.gnu.org/licenses/agpl.txt
+#    @copyright  2000 Micz Flor
+#    @link       http://www.sourcefabric.org
+#    @author     Micz Flor <micz.flor@sourcefabric.org>
+
+--- snip, jumping to 2014 ---
+
+(While pushing this code to GitHub, I changed the license - 
+originally it was GNU GPL. The rest of the code is over ten 
+years old and besides adding cvlc in the config file, I left
+it untouched. It is here more for historic reasons :)
+
+--- snip, back to the past ---
+
+INSTALLATION OF LOWLIVE V.0.8.3
+
+April, 15th 2002
+
+-------------------------------------------------------------
+LOWLIVE provides remote control over radio playout and 
+scheduling.
+
+Copyright (C)2000-2002 Micz Flor, Media Development Loan Fund
+http://www.campware.org 
+Campware encourages further development. Please let us know.
+-------------------------------------------------------------
+
+SYSTEM REQUIREMENTS
+
+The installation of LOWLIVE requires a Linux server running 
+Perl and a working soundcard (if the installation is used to 
+control an audio device attached to the server).
+
+The disk space required depends on the audio material stored 
+on the LOWLIVE server. If the upload function is switched off, 
+not much space is needed (and LOWLIVE will mainly function as a 
+server managing the bookmarks to audio files on remote servers).
+-------------------------------------------------------------
+
+INSTALLATION PROCEDURE
+
+the tarball of LOWLIVE unzips into the following folders:
+
+- cgi-bin (this contains the cgi scripts)
+- var (this contains the config files and skins)
+- html (contains img and index and stores files later)
+
+CGI-BIN: move the files in the 'cgi-bin' folder into the cgi-bin
+folder on your server
+(e.g. /var/www/cgi-bin)
+
+VAR: create a folder for the config files somewhere outside 
+the area accessible by the webserver and move the files
+from the 'var' directory there
+(eg. /var/lowlive/)
+
+HTML: move index.html and the 'img' directory into the folder
+which will be the docroot folder for all lowlive activities.
+(e.g. /var/www/html/lowlive/)
+
+4. adjust the config file:
+as delivered, the LOWLIVE server will assume a standard RedHat 
+or Mandrake environment.
+the LOWLIVE web activities are set to:
+/var/www/html/lowlive/
+the config files are stored in: 
+/var/lowlive/
+the cgi-bin folder is:
+/var/www/cgi-bin/
+also see "automated playout" below for configuration.
+
+IMPORTANT: change the basurl and the cgi urls to your hostname
+in the file lowlive.conf. also change the location of this file
+in the beginning of the cgi scripts in the cgi-bin folder.
+
+5. set the access rights for the cgi files and the folders.
+the folder rights need to be accessible for writing by apache
+(or any other webserver you are using). the upload cgi stores 
+all data in the /tmp directory, before moving it to the
+directory of the client.
+
+if you now call the lowlive_main.cgi file in your browser
+(e.g. http://localhost/cgi-bin/lowlive_main.cgi), you should
+see the login screen of LOWLIVE.
+
+6. check the fup.cgi file and make sure that there is a folder
+for the temporary upload of the file and the webserver has 
+the right to write and delete files in this folder. the
+default folder is /tmp which should be available on most
+linux distributions.
+
+-------------------------------------------------------------
+
+MIME TYPES
+
+by default, LOWLIVE intends to start the real player from
+the client browser. this is controlled via the mime type in 
+the config file. realplayer was chosen as it plays mp3 and
+real and is available for a broad range of operating systems.
+if you want to change the mime type, either take the mp3
+mime as suggested in the config file or add your very own.
+(UPDATE 2010: i replaced this with VLC - no more real...)
+-------------------------------------------------------------
+
+STARTING LOWLIVE
+
+if you want to run LOWLIVE, the first thing you need to do is
+registering a user. in order to do this:
+
+1. set the multiuser function in the config file to 'yes'
+
+2. call the lowlive_main.cgi file in your browser (etc. 
+http://localhost/cgi-bin/lowlive_main.cgi), and click on 
+'register new user'
+
+3. fill out the form
+
+4. if you want to use LOWLIVE in only one-user mode, change
+the multiuser variable in the config file to 'no'
+
+-------------------------------------------------------------
+
+AUTOMATED PLAYOUT
+
+the automated playout needs you to install a cronjob that checks
+for things to do and triggers the player accordingly.
+IMPORTANT: in the config file you have to specify which user 
+is being used by the scheduler. you can also set which audio player 
+you are using for playout. make sure that the player is installed 
+and the user exists.
+
+the trigger.pl file is in the var folder. place it anywhere 
+outside the area accessible by the webserver.
+
+inside trigger.tpl you have to alter one line pointing towards
+the configuration file.
+
+CRONTAB ENTRY SHOULD LOOK SOMETHING LIKE THIS:
+* * * * * perl /var/lowlive/trigger.pl
+
+a star for all items in cron triggers every minute. you can add the 
+line by calling "sudo crontab -e".
+
+MORE THAN ONE AUTOMATION
+if you plan to use one LOWLIVE multiuser install with more than
+one playout, start by copying the trigger.pl file - and
+start developing your own. if you set a user manually in there,
+if will read the schedule from that user account. with tweaking
+some more, you might be able to pipe the sound into a different
+sound card... if you do, let me know...
+
+-------------------------------------------------------------
+
+FINISH
+
+that's it, basically. if you have any questions, please contact
+me at: micz@eudoramail.com
+
+-------------------------------------------------------------
+
+UPDATE 2010
+
+LOWLIVE is history and not longer maintained. 
+for our new radio software, go and see: 
+http://www.sourcefabric.org
+http://www.twitter.com/sourcefabric
+http://www.facebook.com/sourcefabric
+contact me at: micz.flor@sourcefabric.org

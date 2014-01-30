@@ -8,9 +8,9 @@ lowlive is a bundle of Perl scripts, which allow you to remote control audio pla
 Firstly, because it was the first "proof of concept" for what later became Airtime
 http://en.wikipedia.org/wiki/Airtime 
 
-Secondly, because I just love the skin 'city' I made back in 2010 :)
+Secondly, because I just love the skin 'city' I hacked together in 2000. See below :)
 
-lowlive was written in Perl, and despite the fact that the transisitons between tracks were quite crude (piping into the audio out, basically), it did have a number of features which are still nice to have today:
+Despite the fact that the playout transisitons between tracks were quite crude (piping into the audio out, basically), it did have a number of features which still hold up today:
 
 * upload files and create playlists
 * schedule remote live streams
